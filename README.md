@@ -103,3 +103,91 @@ The detailed Role 3 README is:
 ```text
 role3_perception/README.md
 ```
+
+# Intent-Aware UAV VLN
+
+This repository contains the shared graduate project work for the intent-aware UAV vision-language navigation pipeline.
+
+## Current Contribution: Intent Module
+
+The intent-generation module has been added under:
+
+```text
+intent/
+```
+
+This module consumes the structured BeliefState JSON produced by the perception pipeline and generates ranked UAV intent candidates.
+
+Current intent pipeline:
+
+```text
+BeliefState JSON -> Intent Generation -> Ranked UAV Actions
+```
+
+Two approaches are implemented:
+
+- **Rule-Based Intent Generation** — uses deterministic mapping from detected objects to UAV actions based on:
+  - detected labels (car, person, building, etc.)
+  - object confidence
+  - spatial location and visibility
+  - predefined action rules
+
+  Produces structured intent outputs with scoring.
+
+- **VLM-Based Intent Generation** — uses a Vision-Language Model (Qwen2.5-VL) to generate scene-aware UAV intents from:
+  - aerial image
+  - BeliefState JSON
+
+  Each image produces:
+  - 3 ranked intent candidates
+  - applicability score
+  - feasibility score
+  - final score
+
+## Running Intent Module
+
+From project root:
+
+```bash
+python intent/scripts/demo_intent_scoring.py
+```
+
+For VLM (GPU required):
+
+```bash
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+python intent/scripts/demo_vlm_intent_scoring.py
+```
+
+Outputs are written under:
+
+```text
+intent/outputs/rule_based/
+intent/outputs/vlm/
+```
+
+## Evaluation
+
+Evaluation scripts are available under:
+
+```text
+intent/evaluation/
+```
+
+VLM evaluation includes:
+
+- parse success
+- perception overlap
+- scene relevance (manual)
+- feasibility (manual)
+
+## More Documentation
+
+The detailed Intent README is:
+
+```text
+intent/README.md
+```
+
+
+
