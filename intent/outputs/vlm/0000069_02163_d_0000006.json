@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_bench",
+      "target": "bench in the park",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The bench is clearly visible, making it an easy target."
+    },
+    {
+      "intent": "survey_bicycle_area",
+      "target": "bicycle near fence",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.9,
+      "final_score": 0.85,
+      "reason": "Bicycles are stationary and easily identifiable."
+    },
+    {
+      "intent": "take_photo_of_people",
+      "target": "people on the playground",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.7,
+      "final_score": 0.8,
+      "reason": "People are present but may be moving quickly, requiring careful timing."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000069_02163_d_0000006.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000069_02163_d_0000006.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

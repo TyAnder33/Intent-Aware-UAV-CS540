@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_parking_lot",
+      "target": "parking lot with cars",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The parking lot has multiple cars, making it an ideal subject for a photo."
+    },
+    {
+      "intent": "monitor_traffic_flow",
+      "target": "cars in the parking lot",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.7,
+      "final_score": 0.8,
+      "reason": "Cars are moving slowly, which makes monitoring traffic flow feasible."
+    },
+    {
+      "intent": "collect_data_on_cell_phones",
+      "target": "cell phones on the ground",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.6,
+      "final_score": 0.75,
+      "reason": "Cell phones are scattered around, providing opportunities for data collection."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_01000_d_0000026.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_01000_d_0000026.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

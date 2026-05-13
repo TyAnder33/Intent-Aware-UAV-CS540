@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_traffic_crossing",
+      "target": "intersection with cars and pedestrians",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The intersection has multiple vehicles and people, making it an ideal location for taking a photo."
+    },
+    {
+      "intent": "monitor_traffic_flow",
+      "target": "cars at the center of the intersection",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The central area of the intersection has several cars, providing good visibility for monitoring traffic flow."
+    },
+    {
+      "intent": "record_event_at_intersection",
+      "target": "pedestrian crossing near trees",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "There is a pedestrian crossing surrounded by trees, which could be interesting to record as part of an event."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000001_03499_d_0000006.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000001_03499_d_0000006.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

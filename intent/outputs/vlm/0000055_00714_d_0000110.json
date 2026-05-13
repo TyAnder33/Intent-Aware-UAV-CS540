@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "monitor_people_activity",
+      "target": "people in the center area",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "High confidence on people presence, feasible to monitor from above."
+    },
+    {
+      "intent": "track_car_movement",
+      "target": "cars near the top right corner",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "Confidence on cars present, feasible but requires careful maneuvering."
+    },
+    {
+      "intent": "survey_dining_tables",
+      "target": "dining tables at the bottom left corner",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.5,
+      "final_score": 0.55,
+      "reason": "Moderate confidence on dining tables, feasible but less likely due to distance."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000055_00714_d_0000110.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000055_00714_d_0000110.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

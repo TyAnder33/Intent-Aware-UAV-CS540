@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_children_playing",
+      "target": "children playing on skateboards and bicycles near the bottom right corner",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "Children are actively engaged in activities, providing good subject matter for photography."
+    },
+    {
+      "intent": "fly_over_park",
+      "target": "the park area in the center of the image",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The park area is large and open, making it suitable for flying over."
+    },
+    {
+      "intent": "monitor_traffic_near_bicycles",
+      "target": "bicycles parked under the yellow tent at the top left corner",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "Bicycles are stationary and can be easily monitored from above."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000069_01109_d_0000004.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000069_01109_d_0000004.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_car",
+      "target": "white car in center",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The white car is clearly visible, making it an ideal subject for photography."
+    },
+    {
+      "intent": "navigate_to_person",
+      "target": "person walking on left side",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "There is a person walking on the left side, which could be a potential subject for navigation."
+    },
+    {
+      "intent": "monitor_traffic_light",
+      "target": "traffic light at intersection",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "A traffic light is present at the intersection, providing a clear point of interest."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_02500_d_0000029.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_02500_d_0000029.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

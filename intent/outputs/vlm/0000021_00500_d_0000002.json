@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_pathway",
+      "target": "pathway surrounded by greenery",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.9,
+      "final_score": 0.85,
+      "reason": "The pathway is clearly visible, making it an ideal subject for aerial capture."
+    },
+    {
+      "intent": "shoot_motorcycle_from_above",
+      "target": "yellow motorcycle parked on grassy area",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.8,
+      "final_score": 0.75,
+      "reason": "The motorcycle is easily identifiable and located in a suitable position for aerial photography."
+    },
+    {
+      "intent": "capture_persons_near_riverbank",
+      "target": "people walking along riverbank",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "People are present but scattered across the scene, requiring careful selection of subjects."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000021_00500_d_0000002.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000021_00500_d_0000002.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

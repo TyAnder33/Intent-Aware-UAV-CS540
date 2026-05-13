@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "capture_high_quality_image",
+      "target": "the entire parking lot",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.9,
+      "final_score": 0.9,
+      "reason": "The parking lot offers ample space to capture high-quality images without obstruction."
+    },
+    {
+      "intent": "fly_over_marketplace",
+      "target": "marketplace area with buildings and vehicles",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The marketplace provides an interesting and diverse environment to explore."
+    },
+    {
+      "intent": "inspect_truck_movement",
+      "target": "trucks in the parking lot",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "Trucks are moving, which makes it ideal for observing their movement patterns."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000076_02142_d_0000009.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000076_02142_d_0000009.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

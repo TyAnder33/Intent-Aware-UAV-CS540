@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_pathway",
+      "target": "pedestrian pathway in the park",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.9,
+      "final_score": 0.85,
+      "reason": "The pathway is clearly visible, making it an ideal target for a short flight over."
+    },
+    {
+      "intent": "capture_bicyclists",
+      "target": "bicycles on the pathway",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.8,
+      "final_score": 0.75,
+      "reason": "Bicycles are present but may be moving quickly, requiring careful maneuvering."
+    },
+    {
+      "intent": "monitor_persons_in_center",
+      "target": "persons walking near the center of the path",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "Persons are clustered around the central area, providing good coverage options."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000023_00868_d_0000010.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000023_00868_d_0000010.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

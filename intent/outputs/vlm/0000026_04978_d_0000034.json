@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_traffic_congestion",
+      "target": "traffic congestion in the intersection",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "high applicability score due to traffic congestion, feasible as it requires minimal equipment."
+    },
+    {
+      "intent": "take_photo_of_buildings",
+      "target": "buildings along the street",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.9,
+      "final_score": 0.8,
+      "reason": "moderate applicability score but feasible with current equipment."
+    },
+    {
+      "intent": "monitor_environmental_conditions",
+      "target": "environment around the intersection",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "low applicability score but feasible for environmental monitoring tasks."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_04978_d_0000034.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_04978_d_0000034.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_people",
+      "target": "people walking on the path",
+      "applicability_score": 0.85,
+      "feasibility_score": 0.8,
+      "final_score": 0.825,
+      "reason": "The people are clearly visible, making it easy to fly over them."
+    },
+    {
+      "intent": "take_photo_of_bicycles",
+      "target": "bicycles parked along the path",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "Bicycles are easily identifiable and can be photographed from above."
+    },
+    {
+      "intent": "monitor_environment",
+      "target": "trees in the background",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "Trees provide a natural backdrop that can be monitored effectively."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000022_01036_d_0000006.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000022_01036_d_0000006.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

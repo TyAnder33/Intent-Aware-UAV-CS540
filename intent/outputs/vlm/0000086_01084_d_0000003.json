@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "monitor_game_progress",
+      "target": "game progress",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.9,
+      "final_score": 0.9,
+      "reason": "Game progress can be monitored from above, offering a comprehensive view of ongoing activities."
+    },
+    {
+      "intent": "fly_over_basketball_court",
+      "target": "basketball court",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The basketball court is clearly visible, making it an ideal target."
+    },
+    {
+      "intent": "take_photo_of_people_playing",
+      "target": "people playing on the court",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "People are actively engaged in playing basketball, providing good subject matter for photography."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000086_01084_d_0000003.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000086_01084_d_0000003.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

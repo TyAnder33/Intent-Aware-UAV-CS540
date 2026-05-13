@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "Monitor parked cars",
+      "target": "cars parked along the street",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "Cars are stationary and easily identifiable, providing clear targets for monitoring."
+    },
+    {
+      "intent": "Follow pedestrian",
+      "target": "person walking in the center of the street",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The person is clearly visible and moving, making it feasible to follow them."
+    },
+    {
+      "intent": "Survey building exterior",
+      "target": "building with signage on the right side of the street",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "The building has distinct signage that can be targeted for surveying purposes."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_01500_d_0000027.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_01500_d_0000027.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

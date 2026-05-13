@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_pathway",
+      "target": "pathway surrounded by greenery and people walking",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.9,
+      "final_score": 0.85,
+      "reason": "The pathway is clearly visible, making it an ideal subject for aerial capture."
+    },
+    {
+      "intent": "shoot_people_at_center_of_park",
+      "target": "people walking in the center of the park",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.8,
+      "final_score": 0.75,
+      "reason": "People are present at the center of the park, providing a focal point for the shot."
+    },
+    {
+      "intent": "capture_motorcycles_in_action",
+      "target": "motorcycles on the path near the rocks",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "Motorcycles are moving along the path, offering dynamic movement for the drone footage."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000021_00000_d_0000001.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000021_00000_d_0000001.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

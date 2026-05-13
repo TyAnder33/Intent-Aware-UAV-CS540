@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_people",
+      "target": "people in the middle area",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "high applicability score due to people presence, feasible as there's no immediate danger."
+    },
+    {
+      "intent": "take_photo_of_dining_tables",
+      "target": "dining tables at the bottom left corner",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.8,
+      "final_score": 0.7,
+      "reason": "moderate applicability score with dining tables present, feasible if there's enough light."
+    },
+    {
+      "intent": "monitor_umbrellas",
+      "target": "umbrellas on top right side",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "moderate applicability score with umbrellas present, feasible but requires careful navigation."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000055_00000_d_0000109.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000055_00000_d_0000109.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

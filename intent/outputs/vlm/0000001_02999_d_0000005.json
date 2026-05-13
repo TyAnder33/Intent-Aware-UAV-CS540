@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_market_scene",
+      "target": "market area with people and vehicles",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The market area has high activity, making it suitable for taking photos."
+    },
+    {
+      "intent": "monitor_traffic_flow",
+      "target": "main road with multiple cars",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The main road shows active traffic flow, which can be monitored effectively."
+    },
+    {
+      "intent": "survey_building_facade",
+      "target": "building facades on both sides of the street",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "Building facades provide an interesting urban landscape to survey."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000001_02999_d_0000005.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000001_02999_d_0000005.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

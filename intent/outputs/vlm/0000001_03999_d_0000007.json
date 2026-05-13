@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_crosswalk",
+      "target": "crosswalk area",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The crosswalk is clearly visible, making it an ideal subject for photography."
+    },
+    {
+      "intent": "monitor_traffic_volume",
+      "target": "intersection with cars and motorcycles",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "Traffic volume can be observed from above, providing valuable data on road usage."
+    },
+    {
+      "intent": "survey_city_scape",
+      "target": "urban landscape including buildings and trees",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "The cityscape offers diverse subjects for surveying, such as buildings and greenery."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000001_03999_d_0000007.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000001_03999_d_0000007.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

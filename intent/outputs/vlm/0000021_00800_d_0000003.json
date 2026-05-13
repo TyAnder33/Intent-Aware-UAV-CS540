@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_landscape",
+      "target": "grassy area with trees in the background",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The grassy area provides ample space for flying, and there are no immediate obstacles."
+    },
+    {
+      "intent": "capture_photo",
+      "target": "trees along the path",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "Trees provide good subjects for photography, and the area seems suitable for capturing images."
+    },
+    {
+      "intent": "follow_persons",
+      "target": "people walking on the path",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "There are people present, but they may be too close to fly over them safely."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000021_00800_d_0000003.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000021_00800_d_0000003.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

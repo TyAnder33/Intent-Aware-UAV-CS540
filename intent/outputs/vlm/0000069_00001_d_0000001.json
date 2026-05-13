@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_people_playing_sports",
+      "target": "people playing sports in the middle area",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The scene shows people engaging in various activities, making it suitable for capturing their movements."
+    },
+    {
+      "intent": "take_photo_of_event",
+      "target": "event tent with colorful banners",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.9,
+      "final_score": 0.8,
+      "reason": "The event tent stands out as an important focal point that can be highlighted by taking a photo."
+    },
+    {
+      "intent": "monitor_traffic_near_bike_rack",
+      "target": "bike rack on the right side",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "There is a bike rack near the edge of the frame which could be interesting to monitor for any traffic-related activity."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000069_00001_d_0000001.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000069_00001_d_0000001.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

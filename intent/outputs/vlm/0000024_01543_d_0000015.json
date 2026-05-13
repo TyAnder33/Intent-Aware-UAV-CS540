@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_people",
+      "target": "people in the park",
+      "applicability_score": 0.82,
+      "feasibility_score": 0.75,
+      "final_score": 0.785,
+      "reason": "high confidence on people's presence, moderate safety concerns due to potential obstacles like reeds."
+    },
+    {
+      "intent": "survey_reed_field",
+      "target": "reeds along the path",
+      "applicability_score": 0.81,
+      "feasibility_score": 0.7,
+      "final_score": 0.755,
+      "reason": "high confidence on reeds' presence, moderate safety concerns due to potential obstacles."
+    },
+    {
+      "intent": "take_photo_of_bench",
+      "target": "bench near the right side of the field",
+      "applicability_score": 0.4,
+      "feasibility_score": 0.6,
+      "final_score": 0.5,
+      "reason": "low confidence on bench visibility, low safety score due to potential hazards."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000024_01543_d_0000015.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000024_01543_d_0000015.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

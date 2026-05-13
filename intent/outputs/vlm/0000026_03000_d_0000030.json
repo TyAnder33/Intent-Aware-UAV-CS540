@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "drone_survey",
+      "target": "the entire parking area",
+      "applicability_score": 0.91,
+      "feasibility_score": 0.88,
+      "final_score": 0.895,
+      "reason": "Detection confidence is high, but practicality might be limited by height constraints."
+    },
+    {
+      "intent": "parking_check",
+      "target": "all parked cars in the parking lot",
+      "applicability_score": 0.92,
+      "feasibility_score": 0.85,
+      "final_score": 0.885,
+      "reason": "The detection confidence is high, making it applicable."
+    },
+    {
+      "intent": "object_detection",
+      "target": "any moving object within the parking area",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.83,
+      "final_score": 0.865,
+      "reason": "Detection confidence is moderate, but there's potential for missed objects due to speed."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_03000_d_0000030.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_03000_d_0000030.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

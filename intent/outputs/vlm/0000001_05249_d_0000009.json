@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_marketplace",
+      "target": "marketplace area with shops and stalls",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The marketplace area has multiple cars parked, indicating it's a busy location where flying over could provide valuable data on traffic patterns."
+    },
+    {
+      "intent": "inspect_car_parking_lot",
+      "target": "parking lot with various vehicles",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.7,
+      "final_score": 0.8,
+      "reason": "The parking lot contains numerous cars, making it an ideal spot for inspecting vehicle movements and parking regulations."
+    },
+    {
+      "intent": "survey_building_facade",
+      "target": "building facade with signage and advertisements",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.6,
+      "final_score": 0.7,
+      "reason": "The building facade features signs and advertisements, which can be useful for market analysis or urban planning purposes."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000001_05249_d_0000009.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000001_05249_d_0000009.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

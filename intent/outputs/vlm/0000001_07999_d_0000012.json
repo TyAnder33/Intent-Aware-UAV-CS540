@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_marketplace",
+      "target": "marketplace area with trees in the background",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The marketplace area has high relevance, and flying over it would be feasible given the current visibility."
+    },
+    {
+      "intent": "survey_traffic_flow",
+      "target": "cars moving along the road",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "Surveying traffic flow requires a clear view of the road, which is available from this vantage point."
+    },
+    {
+      "intent": "take_photo_of_people",
+      "target": "people sitting on the bench near the trees",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "While people are present, taking photos might require careful maneuvering due to their proximity."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000001_07999_d_0000012.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000001_07999_d_0000012.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

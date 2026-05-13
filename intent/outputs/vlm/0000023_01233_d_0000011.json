@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_pathway",
+      "target": "park pathway in the center of the image",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.9,
+      "final_score": 0.85,
+      "reason": "The park pathway is clearly visible, making it an ideal target for a short flight over."
+    },
+    {
+      "intent": "capture_persons_near_bike",
+      "target": "person near bicycle on left side of image",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.8,
+      "final_score": 0.75,
+      "reason": "There is a person near a bicycle, which could be captured during a short flight."
+    },
+    {
+      "intent": "monitor_dog_activity",
+      "target": "dog in middle of image",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.7,
+      "final_score": 0.65,
+      "reason": "A dog is present in the middle of the image, suitable for monitoring during a short flight."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000023_01233_d_0000011.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000023_01233_d_0000011.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_lake_view",
+      "target": "lake view from the park pathway",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The lake view offers a scenic backdrop that can be captured effectively by hovering over the area."
+    },
+    {
+      "intent": "fly_over_people_on_bike_path",
+      "target": "people riding bicycles on the path near the lake",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The area with people riding bicycles is visually prominent, making it an ideal subject for a short flight."
+    },
+    {
+      "intent": "hover_above_motorcycle",
+      "target": "motorcycle parked in the grassy area",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.9,
+      "final_score": 0.75,
+      "reason": "The motorcycle is clearly visible and accessible from above, providing good visibility and control."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000023_00300_d_0000009.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000023_00300_d_0000009.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

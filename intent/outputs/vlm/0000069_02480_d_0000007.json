@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_activities",
+      "target": "people exercising in the park",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The park activities are clearly visible, making it easy to capture footage."
+    },
+    {
+      "intent": "pan_to_crowd_of_people",
+      "target": "crowd of people sitting on benches",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The crowd is easily identifiable, but may require careful maneuvering due to potential obstructions."
+    },
+    {
+      "intent": "zoom_in_on_tree",
+      "target": "tree with green leaves",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "The tree is prominent and can be captured at close range without significant difficulty."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000069_02480_d_0000007.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000069_02480_d_0000007.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park",
+      "target": "the park area where people are gathered",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The park provides an open space with no immediate obstacles, making it suitable for flying."
+    },
+    {
+      "intent": "take_photo_of_people",
+      "target": "people in the park",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.7,
+      "final_score": 0.8,
+      "reason": "People are scattered throughout the park, providing good opportunities for taking photos."
+    },
+    {
+      "intent": "monitor_traffic",
+      "target": "pedestrians moving around the park",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.6,
+      "final_score": 0.7,
+      "reason": "Pedestrians are present but not densely packed, allowing for monitoring without significant risk."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000069_00713_d_0000003.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000069_00713_d_0000003.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_basketball_court",
+      "target": "basketball court with multiple players",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The basketball court is clearly visible, making it an ideal target."
+    },
+    {
+      "intent": "take_photo_of_people_playing",
+      "target": "people playing on the basketball court",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.7,
+      "final_score": 0.8,
+      "reason": "People are actively engaged in sports activities, providing good subject matter for photography."
+    },
+    {
+      "intent": "monitor_traffic_near_motorcycles",
+      "target": "motorcycles near the basketball court",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.6,
+      "final_score": 0.7,
+      "reason": "Motorcycles are present but less prominent than people, so monitoring traffic might be challenging."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000081_00000_d_0000001.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000081_00000_d_0000001.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

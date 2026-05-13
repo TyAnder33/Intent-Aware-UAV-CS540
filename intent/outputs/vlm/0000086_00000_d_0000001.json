@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "survey_court_conditions",
+      "target": "court surface and markings",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.9,
+      "final_score": 0.9,
+      "reason": "high relevance to visible scene, feasible with current equipment"
+    },
+    {
+      "intent": "take_photo_of_basketball_game",
+      "target": "basketball game in progress on court",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "high relevance to visible scene, feasible with current equipment"
+    },
+    {
+      "intent": "monitor_volleyball_match",
+      "target": "volleyball match taking place on court",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "relevant to visible scene, feasible but requires specific equipment"
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000086_00000_d_0000001.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000086_00000_d_0000001.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

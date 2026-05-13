@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park_pathway",
+      "target": "pathway in the park with people walking",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "The pathway is clearly visible, making it an ideal target."
+    },
+    {
+      "intent": "capture_persons_near_tree",
+      "target": "people near trees on the right side of the path",
+      "applicability_score": 0.6,
+      "feasibility_score": 0.6,
+      "final_score": 0.6,
+      "reason": "People are present but may be obstructed by trees."
+    },
+    {
+      "intent": "fly_low_to_capture_flowers",
+      "target": "flowers growing along the path",
+      "applicability_score": 0.5,
+      "feasibility_score": 0.5,
+      "final_score": 0.5,
+      "reason": "Flowers are visible but may be too low for optimal capture."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000024_01000_d_0000014.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000024_01000_d_0000014.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

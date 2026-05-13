@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "take_photo_of_cell_phone",
+      "target": "cell phone in bottom right corner",
+      "applicability_score": 0.945,
+      "feasibility_score": 0.875,
+      "final_score": 0.91,
+      "reason": "high confidence detection, reasonable area size"
+    },
+    {
+      "intent": "navigate_to_car_in_middle",
+      "target": "white car in middle region",
+      "applicability_score": 0.913,
+      "feasibility_score": 0.836,
+      "final_score": 0.875,
+      "reason": "good confidence detection, moderate area size"
+    },
+    {
+      "intent": "record_traffic_flow",
+      "target": "cars on road",
+      "applicability_score": 0.892,
+      "feasibility_score": 0.802,
+      "final_score": 0.847,
+      "reason": "moderate confidence detection, good area size"
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_02000_d_0000028.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_02000_d_0000028.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_park",
+      "target": "park area with people and trees",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The park provides ample space for flying, and there are no immediate obstacles."
+    },
+    {
+      "intent": "take_photo_of_people",
+      "target": "people in the park",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.7,
+      "final_score": 0.75,
+      "reason": "People are present but may be moving quickly; requires careful timing."
+    },
+    {
+      "intent": "monitor_traffic_near_motorcycles",
+      "target": "motorcycles near the park entrance",
+      "applicability_score": 0.7,
+      "feasibility_score": 0.6,
+      "final_score": 0.65,
+      "reason": "Motorcycles are stationary, making it easier to monitor them from above."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000024_00000_d_0000012.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000024_00000_d_0000012.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}

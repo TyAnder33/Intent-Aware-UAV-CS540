@@ -1,0 +1,31 @@
+{
+  "intent_candidates": [
+    {
+      "intent": "fly_over_parking_lot",
+      "target": "parking lot with cars",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.8,
+      "final_score": 0.85,
+      "reason": "The parking lot has multiple cars, making it an ideal location for a short flight."
+    },
+    {
+      "intent": "take_photo_of_cell_phone",
+      "target": "cell phone on right side",
+      "applicability_score": 0.9,
+      "feasibility_score": 0.7,
+      "final_score": 0.8,
+      "reason": "The cell phone is clearly visible in the image, providing a good subject for photography."
+    },
+    {
+      "intent": "inspect_truck",
+      "target": "truck near building",
+      "applicability_score": 0.8,
+      "feasibility_score": 0.6,
+      "final_score": 0.7,
+      "reason": "The truck is located close to the building, making it accessible for inspection."
+    }
+  ],
+  "source_image": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/datasets/VisDrone2019-DET-val/images/0000026_04000_d_0000032.jpg",
+  "belief_state": "/home/nada/AirVLN_ws/intent-aware-uav-vln/role3_perception/outputs/json/0000026_04000_d_0000032.json",
+  "method": "vlm_qwen2_5_vl_3b_scene_level"
+}
