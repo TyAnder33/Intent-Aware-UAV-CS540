@@ -1,34 +1,69 @@
 # Intent-Aware UAV VLN
 
-This repository contains the shared graduate project work for the intent-aware UAV vision-language navigation pipeline.
+This repository contains a modular graduate-project pipeline for intent-aware UAV vision-language navigation. The system takes aerial imagery, converts it into a structured scene representation, and uses that representation to generate and evaluate UAV intent candidates.
 
-## Current Contribution: Role 3 Perception
-
-Role 3 perception code has been added under:
+At a high level, the implemented pipeline is:
 
 ```text
-role3_perception/
+Aerial image -> Perception / BeliefState -> Intent generation -> Intent scoring / evaluation
 ```
 
-This module converts UAV/drone image frames into structured belief-state JSON for downstream intent generation and scoring.
+The project is organized into two main components:
 
-Current perception flow:
+```text
+role3_perception/   Object detection, semantic mapping, belief-state generation
+intent/             Rule-based and VLM-based intent generation, scoring, and evaluation
+```
+
+## Repository Layout
+
+### `role3_perception/`
+
+The perception module converts UAV/drone image frames into structured belief-state JSON. It includes:
+
+- YOLO-based object detection wrapper
+- semantic mapping from detections to object geometry and image regions
+- `BeliefState` representation for downstream reasoning
+- generic image and AerialVLN-style demo scripts
+- VisDrone benchmark utilities for people/car detection context
+- tests for perception, mapping, belief state, and benchmark helpers
+
+Perception flow:
 
 ```text
 Image frame -> YOLO detector -> Semantic mapper -> BeliefState JSON
 ```
 
-The imported work includes:
+Detailed setup and usage:
 
-- `role3_perception/perception/`: reusable Python perception package
-- `role3_perception/scripts/demo_perception.py`: run inference on generic images or image folders
-- `role3_perception/scripts/demo_aerialvln_perception.py`: run inference on exported AerialVLN/AirVLN frames
-- `role3_perception/scripts/export_aerialvln_headless_frame.py`: helper for exporting one RGB frame from a running AirVLN simulator
-- `role3_perception/scripts/aerialvln_headless_server.sh`: helper for launching the AirVLN simulator server
-- `role3_perception/docs/aerialvln_headless_setup.md`: notes for headless/offscreen AirVLN use
-- `role3_perception/tests/`: unit tests for belief-state construction, semantic mapping, and adapters
+```text
+role3_perception/README.md
+```
+
+### `intent/`
+
+The intent module consumes belief-state JSON and generates ranked UAV intent candidates. It includes:
+
+- rule-based intent generation and scoring
+- VLM-based intent generation using aerial images and belief-state JSON
+- demo scripts for single-image and batch-style runs
+- evaluation scripts, metrics files, score plots, and distribution plots
+
+Intent flow:
+
+```text
+BeliefState JSON -> Intent generation -> Ranked UAV intent candidates
+```
+
+Detailed setup and usage:
+
+```text
+intent/README.md
+```
 
 ## Quick Start
+
+### Perception
 
 From the repository root:
 
@@ -45,149 +80,94 @@ Run perception on one image:
 python scripts/demo_perception.py path/to/frame.jpg --json --save-vis
 ```
 
-Run perception on an image directory:
+Run perception on a directory:
 
 ```bash
 python scripts/demo_perception.py path/to/images --limit 5 --json --save-vis
 ```
 
-Outputs are written under:
+Generated outputs are written under:
 
 ```text
 role3_perception/outputs/json/
 role3_perception/outputs/annotated/
 ```
 
-## AerialVLN / AirVLN Boundary
+### Intent Generation
 
-AerialVLN/AirVLN is simulator-backed. The perception code currently integrates at the RGB-frame boundary:
-
-```text
-AirVLN/AirSim RGB frame + optional simulator metadata -> perception pipeline -> BeliefState
-```
-
-For exported AerialVLN frames:
-
-```bash
-cd role3_perception
-python scripts/demo_aerialvln_perception.py path/to/aerialvln_export/images --limit 5 --save-vis
-```
-
-For exported frames plus metadata:
-
-```bash
-python scripts/demo_aerialvln_perception.py path/to/aerialvln_export --metadata path/to/metadata.json --limit 5 --save-vis
-```
-
-Simulator/headless setup notes are in:
-
-```text
-role3_perception/docs/aerialvln_headless_setup.md
-```
-
-Important simulator distinction: use offscreen/headless rendering that still produces RGB camera images. Do not disable rendering entirely, because the detector needs image frames.
-
-## Tests
-
-Run Role 3 tests from inside the module directory:
-
-```bash
-cd role3_perception
-pytest tests
-```
-
-## More Documentation
-
-The detailed Role 3 README is:
-
-```text
-role3_perception/README.md
-```
-
-# Intent-Aware UAV VLN
-
-This repository contains the shared graduate project work for the intent-aware UAV vision-language navigation pipeline.
-
-## Current Contribution: Intent Module
-
-The intent-generation module has been added under:
-
-```text
-intent/
-```
-
-This module consumes the structured BeliefState JSON produced by the perception pipeline and generates ranked UAV intent candidates.
-
-Current intent pipeline:
-
-```text
-BeliefState JSON -> Intent Generation -> Ranked UAV Actions
-```
-
-Two approaches are implemented:
-
-- **Rule-Based Intent Generation** — uses deterministic mapping from detected objects to UAV actions based on:
-  - detected labels (car, person, building, etc.)
-  - object confidence
-  - spatial location and visibility
-  - predefined action rules
-
-  Produces structured intent outputs with scoring.
-
-- **VLM-Based Intent Generation** — uses a Vision-Language Model (Qwen2.5-VL) to generate scene-aware UAV intents from:
-  - aerial image
-  - BeliefState JSON
-
-  Each image produces:
-  - 3 ranked intent candidates
-  - applicability score
-  - feasibility score
-  - final score
-
-## Running Intent Module
-
-From project root:
+From the repository root:
 
 ```bash
 python intent/scripts/demo_intent_scoring.py
 ```
 
-For VLM (GPU required):
+For VLM-based intent generation, use a GPU-capable environment:
 
 ```bash
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 python intent/scripts/demo_vlm_intent_scoring.py
 ```
 
-Outputs are written under:
+Generated outputs are written under:
 
 ```text
 intent/outputs/rule_based/
 intent/outputs/vlm/
 ```
 
+## AerialVLN / AirVLN Boundary
+
+AerialVLN/AirVLN is simulator-backed and can require a heavy AirSim/Unreal setup. This repository currently integrates at the RGB-frame boundary:
+
+```text
+AirVLN/AirSim RGB frame + optional simulator metadata -> Perception pipeline -> BeliefState
+```
+
+For exported AerialVLN-style frames:
+
+```bash
+cd role3_perception
+python scripts/demo_aerialvln_perception.py path/to/aerialvln_export/images --limit 5 --save-vis
+```
+
+Simulator/headless setup notes are documented in:
+
+```text
+role3_perception/docs/aerialvln_headless_setup.md
+```
+
+For perception, use offscreen/headless rendering that still produces RGB camera images. Do not disable rendering entirely, because the detector needs image frames.
+
 ## Evaluation
 
-Evaluation scripts are available under:
+The repository contains evaluation support for both components.
+
+Perception benchmark:
+
+```bash
+cd role3_perception
+python scripts/benchmark_visdrone.py path/to/VisDrone2019-DET-val --model path/to/yolo26x.pt --classes people car --limit 1000 --random-sample --seed 540 --conf 0.10 --imgsz 1280
+```
+
+Intent evaluation artifacts and scripts are under:
 
 ```text
 intent/evaluation/
 ```
 
-VLM evaluation includes:
+## Tests
 
-- parse success
-- perception overlap
-- scene relevance (manual)
-- feasibility (manual)
+Run perception tests:
 
-## More Documentation
-
-The detailed Intent README is:
-
-```text
-intent/README.md
+```bash
+cd role3_perception
+pytest tests
 ```
 
+The intent module currently includes runnable demo and evaluation scripts. See `intent/README.md` for module-specific instructions.
 
+## Notes
 
+- Large model weights, local datasets, Python caches, and generated outputs should not be committed unless explicitly needed.
+- The perception module README is intentionally kept inside `role3_perception/` rather than replacing this global project README.
+- The final project report should describe the full pipeline results using the evaluation artifacts generated by both modules.
