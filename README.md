@@ -74,15 +74,15 @@ The figures below are reproduced directly from the cached pipeline outputs and m
 
 **Paper Fig. 1 — Sample annotated aerial image from VisDrone2019-DET.** YOLO detections (cars up to confidence 0.88, persons, trucks, motorcycles, bicycles, umbrellas) overlaid on `0000001_02999_d_0000005.jpg`. Running example throughout the paper.
 
-![Perception annotated example](figures/fig5_perception_annotated_example.png)
+![Perception annotated example](figures/fig1_perception_annotated_example.png)
 
 **Paper Fig. 3 — Terminal output of the rule-based pipeline for the sample image.** Detected entities and the top-3 ranked candidates, all vehicle-targeted with scores 0.672 / 0.672 / 0.662 (locked by `role_2/test_methodology_alignment.py`).
 
-![Rule-based top-3 terminal output](figures/fig2_rule_based_top3_terminal.png)
+![Rule-based top-3 terminal output](figures/fig3_rule_based_top3_terminal.png)
 
 **Paper Fig. 5 — Terminal output of the VLM pipeline for the sample image.** Three semantically distinct candidates (market photography, traffic monitoring, building survey) with scores 0.85 / 0.75 / 0.65.
 
-![VLM top-3 terminal output](figures/fig4_vlm_top3_terminal.png)
+![VLM top-3 terminal output](figures/fig5_vlm_top3_terminal.png)
 
 **Paper Fig. 6 — Rule-based top-1 intent score per image (49 images).** Mean 0.742, σ 0.061, range ≈0.60–0.93.
 
