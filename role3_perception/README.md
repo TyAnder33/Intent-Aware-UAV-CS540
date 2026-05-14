@@ -1,290 +1,249 @@
-# Intent-Aware Drone Control Architecture
+# Role 3 Perception
 
-This repository currently contains the Role 3 perception work for the graduate project. The goal of this component is to turn UAV imagery into a structured, machine-readable belief state that downstream intent generation and scoring modules can consume.
+This directory contains the perception component for the intent-aware UAV pipeline. It runs a pretrained YOLO detector on aerial images, converts detections into a structured scene representation, and serializes the result as a `BeliefState` JSON object for downstream intent generation.
 
-Current pipeline:
+The benchmark code also evaluates detector performance on VisDrone2019-DET validation images for the core aerial classes used in the paper: people and cars.
+
+## What This Module Does
 
 ```text
-Image frame -> YOLO detector -> Semantic mapper -> BeliefState JSON
+Aerial image
+-> YOLO detector
+-> semantic mapper
+-> BeliefState JSON
+-> optional VisDrone benchmark metrics
 ```
 
-## What This Work Does
+Main files:
 
-The current implementation provides:
+- `perception/detector_wrapper.py`: wraps a pretrained YOLO checkpoint and normalizes detections.
+- `perception/semantic_mapper.py`: adds center, width, height, area, and coarse image-region fields.
+- `perception/belief_state.py`: stores image metadata, detected objects, and optional drone metadata.
+- `perception/pipeline.py`: exposes `build_belief_state(image)`.
+- `scripts/demo_perception.py`: runs inference and saves JSON/annotated images.
+- `scripts/benchmark_visdrone.py`: evaluates detections against VisDrone annotations.
 
-- A YOLO-based object detector wrapper in `perception/detector_wrapper.py`.
-- A semantic mapper in `perception/semantic_mapper.py` that enriches detections with center, width, height, area, and rough image region.
-- A `BeliefState` data model in `perception/belief_state.py`.
-- A pipeline entrypoint in `perception/pipeline.py`.
-- A generic image demo script in `scripts/demo_perception.py`.
-- An AerialVLN exported-frame adapter in `perception/aerialvln_adapter.py`.
-- An AerialVLN-oriented demo script in `scripts/demo_aerialvln_perception.py`.
-- JSON output saving for every processed image.
-- Optional annotated images with bounding boxes.
+## Environment Setup
 
-The belief state stores:
-
-- image width and height
-- source image path
-- detected objects
-- each object label, bounding box, confidence, center, dimensions, area, and coarse region
-- optional `drone_state` metadata for simulator pose/telemetry
-
-## What This Work Does Not Do Yet
-
-This repo does not currently:
-
-- train or fine-tune a detector
-- run the full AerialVLN/AirVLN simulator
-- control a drone
-- perform path planning or reinforcement learning
-- parse full VLN trajectory/instruction labels
-- maintain temporal memory across frames
-
-For Phase 1, the focus is perception data flow: image in, structured belief state out.
-
-## Install Dependencies
-
-Use a fresh environment instead of the global/base Conda environment. This avoids common `torch`/`numpy` compatibility issues.
+Use Python 3.10 or 3.11 if possible. Python 3.12 can work, but PyTorch/NumPy compatibility issues are more common.
 
 ```bash
+cd /path/to/Intent-Aware-UAV-CS540/role3_perception
+
 python3.10 -m venv .venv
 source .venv/bin/activate
+
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-On this machine, system Python is newer than the tested perception stack, so `.venv` has been created as a Python 3.10 Conda prefix. Use either:
+If `python3.10` is not available, use your available Python executable:
 
 ```bash
-conda activate "$PWD/.venv"
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-or call its interpreter directly:
+The `requirements.txt` intentionally pins `numpy<2` because some PyTorch builds fail with NumPy 2.x during YOLO inference.
 
-```bash
-.venv/bin/python scripts/demo_perception.py path/to/frame.jpg --json --save-vis
-```
+## Download VisDrone2019-DET Validation Data
 
-`ultralytics` is required for real YOLO inference. The tests use mocked detector outputs and do not require downloading model weights.
-
-On first real inference run, Ultralytics may download the requested model weights, such as `yolov8n.pt`, `yolov8x.pt`, or another supported checkpoint.
-
-## Generic Image Demo
-
-Run inference on one image:
-
-```bash
-python scripts/demo_perception.py path/to/frame.jpg --json --save-vis
-```
-
-Run inference on a directory, limited to five images:
-
-```bash
-python scripts/demo_perception.py VisDrone2019-DET-val/images --limit 5 --json --save-vis
-```
-
-Run a stronger/larger model with lower confidence for small aerial objects:
-
-```bash
-python scripts/demo_perception.py VisDrone2019-DET-val/images/0000001_02999_d_0000005.jpg --model yolov8x.pt --imgsz 1280 --conf 0.10 --json --save-vis
-```
-
-The demo defaults to `--imgsz 1280` to improve small-object recall in aerial imagery. Larger values may detect more small objects but will run slower.
-
-## Outputs
-
-Every processed image saves a belief-state JSON file by default:
+The benchmark expects the original VisDrone DET validation folder with this structure:
 
 ```text
-outputs/json/<image_stem>.json
+role3_perception/
+  datasets/
+    VisDrone2019-DET-val/
+      images/
+        *.jpg
+      annotations/
+        *.txt
 ```
 
-If `--save-vis` is enabled, annotated images are saved here:
+Download the **Task 1: Object Detection in Images, valset** from the official VisDrone repository:
 
 ```text
-outputs/annotated/<image_stem>_annotated.<ext>
+https://github.com/VisDrone/VisDrone-Dataset
 ```
 
-Use `--output-dir` to change the output root:
-
-```bash
-python scripts/demo_perception.py path/to/frame.jpg --output-dir outputs/my_run --save-vis
-```
-
-## VisDrone Benchmark
-
-VisDrone DET does include labels. Each image has a matching annotation file in `annotations/` with rows in this format:
+On that page, use:
 
 ```text
-bbox_left,bbox_top,bbox_width,bbox_height,score,category,truncation,occlusion
+Download -> Task 1: Object Detection in Images -> VisDrone-DET dataset -> valset
 ```
 
-Useful VisDrone category IDs include:
+The official page provides BaiduYun and Google Drive links for `VisDrone2019-DET-val`. After downloading, unzip it into `role3_perception/datasets/`.
+
+Example:
+
+```bash
+mkdir -p datasets
+unzip ~/Downloads/VisDrone2019-DET-val.zip -d datasets
+```
+
+After unzipping, verify:
+
+```bash
+ls datasets/VisDrone2019-DET-val/images | head
+ls datasets/VisDrone2019-DET-val/annotations | head
+```
+
+## Model Checkpoint
+
+The paper benchmark used `yolo26x.pt`, a large YOLO checkpoint loaded through the Ultralytics API. Large `.pt` files are not committed to the repository because they exceed normal GitHub file limits.
+
+If your installed Ultralytics version supports YOLO26 checkpoints, this should auto-download on first use:
+
+```bash
+python scripts/benchmark_visdrone.py datasets/VisDrone2019-DET-val \
+  --model yolo26x.pt \
+  --classes people car \
+  --limit 10 \
+  --random-sample \
+  --seed 540 \
+  --conf 0.10 \
+  --imgsz 1280
+```
+
+If auto-download fails, manually place the checkpoint somewhere outside Git tracking and pass its path:
+
+```bash
+python scripts/benchmark_visdrone.py datasets/VisDrone2019-DET-val \
+  --model /path/to/yolo26x.pt \
+  --classes people car \
+  --limit 10 \
+  --random-sample \
+  --seed 540 \
+  --conf 0.10 \
+  --imgsz 1280
+```
+
+Using a different checkpoint such as `yolov8x.pt` or `yolov8n.pt` is fine for testing the code path, but the metrics will not reproduce the paper numbers.
+
+## Reproduce The Paper Benchmark
+
+The paper reports a lightweight detector benchmark on a deterministic 10-image random sample from `VisDrone2019-DET-val`.
+
+Run from `role3_perception/`:
+
+```bash
+python scripts/benchmark_visdrone.py datasets/VisDrone2019-DET-val \
+  --model /path/to/yolo26x.pt \
+  --classes people car \
+  --limit 10 \
+  --random-sample \
+  --seed 540 \
+  --conf 0.10 \
+  --imgsz 1280 \
+  --iou 0.50
+```
+
+Expected summary from the reported run:
 
 ```text
-1 pedestrian
-2 people
-4 car
-5 van
-6 truck
-9 bus
-10 motor
+people: P=0.923 R=0.135 F1=0.236 GT=266 Pred=39
+car:    P=0.897 R=0.419 F1=0.571 GT=248 Pred=116
 ```
 
-For lightweight context on aerial performance, this repo includes a benchmark script that compares YOLO detections against VisDrone ground truth for class groups like `people` and `car`. It reports precision, recall, and F1 at a chosen IoU threshold. This is not the official VisDrone challenge mAP protocol; it is a simple sanity benchmark for presentation context.
-
-Run YOLO26x on the first 25 validation images:
-
-```bash
-python scripts/benchmark_visdrone.py ../VisDrone2019-DET-val --model yolo26x.pt --classes people car --limit 25 --conf 0.10 --imgsz 1280
-```
-
-Run YOLO26x on a reproducible random sample request of 1000 images:
-
-```bash
-python scripts/benchmark_visdrone.py ../VisDrone2019-DET-val --model yolo26x.pt --classes people car --limit 1000 --random-sample --seed 540 --conf 0.10 --imgsz 1280
-```
-
-The local `VisDrone2019-DET-val` split has 548 images. If `--limit 1000` is used on that split, the script evaluates all 548 available images and records the requested limit in `summary.json`.
-
-If `yolo26x.pt` does not auto-download in your local Ultralytics install, upgrade Ultralytics or pass the full path to the checkpoint file:
-
-```bash
-pip install -U ultralytics
-python scripts/benchmark_visdrone.py ../VisDrone2019-DET-val --model path/to/yolo26x.pt --classes people car --limit 25 --conf 0.10 --imgsz 1280
-```
-
-Outputs are saved under:
+Outputs are written to:
 
 ```text
 outputs/benchmarks/visdrone/summary.json
 outputs/benchmarks/visdrone/per_image_metrics.csv
 ```
 
-Class mapping used by the benchmark:
+## Optional Larger Benchmark
+
+For a more stable context benchmark, run a larger random sample:
+
+```bash
+python scripts/benchmark_visdrone.py datasets/VisDrone2019-DET-val \
+  --model /path/to/yolo26x.pt \
+  --classes people car \
+  --limit 1000 \
+  --random-sample \
+  --seed 540 \
+  --conf 0.10 \
+  --imgsz 1280 \
+  --iou 0.50
+```
+
+Note: the VisDrone validation split has fewer than 1000 images. If `--limit 1000` is requested, the script evaluates all available validation images and prints a warning.
+
+## What The Benchmark Measures
+
+This is a simple context benchmark, not the official VisDrone challenge metric.
+
+It reports:
+
+- true positives, false positives, and false negatives
+- precision
+- recall
+- F1
+- ground-truth object count
+- prediction count
+
+Matching rule:
+
+- A predicted box is a true positive if it has IoU >= `0.50` with an unmatched ground-truth box from the same class group.
+- Otherwise the prediction is a false positive.
+- Unmatched ground-truth boxes are false negatives.
+
+Class mapping:
+
+- VisDrone `pedestrian` and `people` -> benchmark group `people`
+- YOLO `person` -> benchmark group `people`
+- VisDrone `car` -> benchmark group `car`
+- YOLO `car` -> benchmark group `car`
+
+This benchmark is useful for explaining detector behavior on aerial images. In the reported run, precision is high but recall is low, meaning YOLO26x is usually correct when it predicts people/cars, but misses many small distant objects in aerial scenes.
+
+## Run Perception Inference On Images
+
+To generate belief-state JSON for a directory of images:
+
+```bash
+python scripts/demo_perception.py datasets/VisDrone2019-DET-val/images \
+  --model /path/to/yolo26x.pt \
+  --limit 5 \
+  --json \
+  --save-vis
+```
+
+Outputs:
 
 ```text
-people: VisDrone pedestrian + people -> YOLO person
-car: VisDrone car -> YOLO car
-vehicle: VisDrone car + van + truck + bus -> YOLO car + truck + bus
+outputs/json/
+outputs/annotated/
 ```
 
-## Belief State Example
-
-Example object entry:
-
-```json
-{
-  "label": "car",
-  "bbox_xyxy": [100.0, 50.0, 220.0, 180.0],
-  "confidence": 0.92,
-  "center": [160.0, 115.0],
-  "width": 120.0,
-  "height": 130.0,
-  "area": 15600.0,
-  "region_horizontal": "center",
-  "region_vertical": "middle"
-}
-```
-
-Programmatic usage:
-
-```python
-from perception.pipeline import build_belief_state
-
-belief = build_belief_state("path/to/frame.jpg")
-print(belief.summary())
-print(belief.to_dict())
-```
-
-## AerialVLN Integration
-
-AerialVLN/AirVLN is simulator-backed. It uses AirSim/Unreal simulator environments plus VLN annotation data. The full simulator setup is large, so this repo first supports the useful perception boundary:
-
-```text
-exported AerialVLN RGB frame -> detector -> semantic mapper -> BeliefState
-```
-
-For this machine, the official AirVLN repository and datasets are set up as a sibling workspace:
-
-```text
-../AirVLN_ws/AirVLN
-../AirVLN_ws/DATA/data/aerialvln
-../AirVLN_ws/DATA/data/aerialvln-s
-../AirVLN_ws/ENVs
-```
-
-Headless/offscreen use is documented in `docs/aerialvln_headless_setup.md`. The short version is:
+To run on one specific image:
 
 ```bash
-conda activate AirVLN
-AIRVLN_GPUS=0 ./scripts/aerialvln_headless_server.sh
+python scripts/demo_perception.py datasets/VisDrone2019-DET-val/images/0000001_02999_d_0000005.jpg \
+  --model /path/to/yolo26x.pt \
+  --json \
+  --save-vis
 ```
 
-Then export one simulator frame and metadata:
-
-```bash
-conda activate AirVLN
-python scripts/export_aerialvln_headless_frame.py --dataset aerialvln --split test --episode-index 0
-```
-
-Finally run this perception pipeline on the exported frame:
-
-```bash
-.venv/bin/python scripts/demo_aerialvln_perception.py outputs/aerialvln_headless_export --metadata outputs/aerialvln_headless_export/metadata.json --save-vis
-```
-
-Run perception on a folder of exported AerialVLN frames:
-
-```bash
-python scripts/demo_aerialvln_perception.py path/to/aerialvln_export/images --limit 5 --save-vis
-```
-
-Attach optional simulator metadata from a JSON file:
-
-```bash
-python scripts/demo_aerialvln_perception.py path/to/aerialvln_export --metadata path/to/frame_metadata.json --limit 5
-```
-
-Example metadata shape:
-
-```json
-{
-  "frame_001.jpg": {
-    "timestamp": "2026-04-21T12:00:00Z",
-    "altitude_m": 42.0,
-    "heading_deg": 135.0,
-    "gps": {"lat": 40.0, "lon": -74.0},
-    "episode_id": "episode_001"
-  }
-}
-```
-
-This metadata is inserted into the final belief state as `drone_state`.
-
-## Full Simulator Boundary
-
-This repository does not currently launch or control the AirVLN simulator directly. For full online simulation, the simulator client should:
-
-1. launch the AirVLN/AirSim environment
-2. capture an RGB camera observation
-3. read simulator pose/telemetry
-4. call `build_belief_state(image, drone_state=telemetry)`
-5. pass the resulting belief state to downstream intent modules
-
-For efficient simulator execution, the group may run Unreal/AirSim in headless/offscreen mode. For perception, use an offscreen-rendering mode that still produces camera images. Do not disable rendering entirely, because YOLO needs RGB frames.
-
-## Tests
-
-Run tests with:
+## Run Tests
 
 ```bash
 pytest tests
 ```
 
-If `pytest` is missing:
+The tests cover:
 
-```bash
-pip install pytest
-pytest tests
-```
+- detector output normalization with mocks
+- semantic mapping geometry
+- `BeliefState` helper methods
+- perception pipeline orchestration
+- VisDrone benchmark helper functions
+
+## Notes For Reproducibility
+
+- Do not commit datasets, generated outputs, or YOLO checkpoint files. They are ignored by `.gitignore`.
+- The exact benchmark numbers depend on the YOLO checkpoint, Ultralytics version, confidence threshold, image size, random seed, and dataset split.
+- For the paper results, use `yolo26x.pt`, `--conf 0.10`, `--imgsz 1280`, `--iou 0.50`, `--random-sample`, `--seed 540`, and `--limit 10`.
