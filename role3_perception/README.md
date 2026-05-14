@@ -111,6 +111,64 @@ Use `--output-dir` to change the output root:
 python scripts/demo_perception.py path/to/frame.jpg --output-dir outputs/my_run --save-vis
 ```
 
+## VisDrone Benchmark
+
+VisDrone DET does include labels. Each image has a matching annotation file in `annotations/` with rows in this format:
+
+```text
+bbox_left,bbox_top,bbox_width,bbox_height,score,category,truncation,occlusion
+```
+
+Useful VisDrone category IDs include:
+
+```text
+1 pedestrian
+2 people
+4 car
+5 van
+6 truck
+9 bus
+10 motor
+```
+
+For lightweight context on aerial performance, this repo includes a benchmark script that compares YOLO detections against VisDrone ground truth for class groups like `people` and `car`. It reports precision, recall, and F1 at a chosen IoU threshold. This is not the official VisDrone challenge mAP protocol; it is a simple sanity benchmark for presentation context.
+
+Run YOLO26x on the first 25 validation images:
+
+```bash
+python scripts/benchmark_visdrone.py ../VisDrone2019-DET-val --model yolo26x.pt --classes people car --limit 25 --conf 0.10 --imgsz 1280
+```
+
+Run YOLO26x on a reproducible random sample request of 1000 images:
+
+```bash
+python scripts/benchmark_visdrone.py ../VisDrone2019-DET-val --model yolo26x.pt --classes people car --limit 1000 --random-sample --seed 540 --conf 0.10 --imgsz 1280
+```
+
+The local `VisDrone2019-DET-val` split has 548 images. If `--limit 1000` is used on that split, the script evaluates all 548 available images and records the requested limit in `summary.json`.
+
+If `yolo26x.pt` does not auto-download in your local Ultralytics install, upgrade Ultralytics or pass the full path to the checkpoint file:
+
+```bash
+pip install -U ultralytics
+python scripts/benchmark_visdrone.py ../VisDrone2019-DET-val --model path/to/yolo26x.pt --classes people car --limit 25 --conf 0.10 --imgsz 1280
+```
+
+Outputs are saved under:
+
+```text
+outputs/benchmarks/visdrone/summary.json
+outputs/benchmarks/visdrone/per_image_metrics.csv
+```
+
+Class mapping used by the benchmark:
+
+```text
+people: VisDrone pedestrian + people -> YOLO person
+car: VisDrone car -> YOLO car
+vehicle: VisDrone car + van + truck + bus -> YOLO car + truck + bus
+```
+
 ## Belief State Example
 
 Example object entry:
