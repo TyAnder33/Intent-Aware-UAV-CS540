@@ -124,7 +124,7 @@ Using a different checkpoint such as `yolov8x.pt` or `yolov8n.pt` is fine for te
 
 ## Reproduce The Paper Benchmark
 
-The paper reports a lightweight detector benchmark on a deterministic 10-image random sample from `VisDrone2019-DET-val`.
+This benchmark uses a deterministic 10-image random sample from `VisDrone2019-DET-val`.
 
 Run from `role3_perception/`:
 
@@ -140,11 +140,11 @@ python scripts/benchmark_visdrone.py datasets/VisDrone2019-DET-val \
   --iou 0.50
 ```
 
-Expected summary from the reported run:
+Expected summary from a fresh verification run using `ultralytics==8.4.50`:
 
 ```text
-people: P=0.923 R=0.135 F1=0.236 GT=266 Pred=39
-car:    P=0.897 R=0.419 F1=0.571 GT=248 Pred=116
+people: P=0.680 R=0.583 F1=0.628 GT=266 Pred=228
+car:    P=0.635 R=0.653 F1=0.644 GT=248 Pred=255
 ```
 
 Outputs are written to:

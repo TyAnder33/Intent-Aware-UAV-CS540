@@ -1,4 +1,4 @@
 numpy<2
 pillow
-ultralytics
+ultralytics==8.4.50
 pytest
