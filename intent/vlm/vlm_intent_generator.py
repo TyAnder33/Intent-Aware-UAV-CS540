@@ -142,7 +142,8 @@ def filter_and_normalize_vlm_result(result, belief_summary):
 
         item["applicability_score"] = round(applicability, 3)
         item["feasibility_score"] = round(feasibility, 3)
-        item["final_score"] = round((applicability + feasibility) / 2, 3)
+        # Paper Eq. (1): S = 0.6 * s_a + 0.4 * s_f, rounded to 2 d.p.
+        item["final_score"] = round(0.6 * applicability + 0.4 * feasibility, 2)
         item["target_source"] = "belief_state"
 
         filtered.append(item)
