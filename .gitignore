@@ -383,7 +383,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Project generated outputs, local datasets, and model weights
-outputs/
+/outputs/
 role3_perception/outputs/
 VisDrone2019-DET-val/
 role3_perception/VisDrone2019-DET-val/
@@ -447,7 +447,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Project generated outputs, local datasets, and model weights
-outputs/
+/outputs/
 role3_perception/outputs/
 VisDrone2019-DET-val/
 role3_perception/VisDrone2019-DET-val/
@@ -458,11 +458,6 @@ intent/models/
 # Local datasets / test images
 role3_perception/datasets/
 role3_perception/test_images/
-
-# Evaluation outputs
-intent/evaluation/*.csv
-intent/evaluation/*.png
-intent/evaluation/*.txt
 
 # Temporary/debug/cache
 intent/outputs/vlm_last_raw_output.txt

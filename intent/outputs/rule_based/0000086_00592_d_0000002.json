@@ -1,0 +1,28 @@
+{
+  "source_image": "",
+  "detected_entities": [
+    "bench",
+    "person",
+    "tennis racket"
+  ],
+  "intent_candidates": [
+    {
+      "intent": "monitor_person_area",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.672,
+      "feasibility_score": 0.652,
+      "final_score": 0.662,
+      "reason": "Generated from entity_rule; target detected with confidence 0.43, visibility 1.00, region score 0.79."
+    },
+    {
+      "intent": "hover_near_person",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.672,
+      "feasibility_score": 0.622,
+      "final_score": 0.647,
+      "reason": "Generated from entity_rule; target detected with confidence 0.43, visibility 1.00, region score 0.79."
+    }
+  ]
+}

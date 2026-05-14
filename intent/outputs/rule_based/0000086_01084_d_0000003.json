@@ -1,0 +1,28 @@
+{
+  "source_image": "",
+  "detected_entities": [
+    "bicycle",
+    "person",
+    "sports ball"
+  ],
+  "intent_candidates": [
+    {
+      "intent": "monitor_person_area",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.646,
+      "feasibility_score": 0.628,
+      "final_score": 0.637,
+      "reason": "Generated from entity_rule; target detected with confidence 0.38, visibility 1.00, region score 0.77."
+    },
+    {
+      "intent": "hover_near_person",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.646,
+      "feasibility_score": 0.598,
+      "final_score": 0.622,
+      "reason": "Generated from entity_rule; target detected with confidence 0.38, visibility 1.00, region score 0.77."
+    }
+  ]
+}

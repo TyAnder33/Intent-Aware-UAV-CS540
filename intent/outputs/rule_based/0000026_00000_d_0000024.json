@@ -1,0 +1,54 @@
+{
+  "source_image": "",
+  "detected_entities": [
+    "person",
+    "vehicle"
+  ],
+  "intent_candidates": [
+    {
+      "intent": "hover_over_vehicle",
+      "target": "vehicle",
+      "source": "entity_rule",
+      "applicability_score": 0.898,
+      "feasibility_score": 0.865,
+      "final_score": 0.881,
+      "reason": "Generated from entity_rule; target detected with confidence 0.88, visibility 1.00, region score 0.79."
+    },
+    {
+      "intent": "inspect_vehicle_area",
+      "target": "vehicle",
+      "source": "entity_rule",
+      "applicability_score": 0.898,
+      "feasibility_score": 0.865,
+      "final_score": 0.881,
+      "reason": "Generated from entity_rule; target detected with confidence 0.88, visibility 1.00, region score 0.79."
+    },
+    {
+      "intent": "follow_vehicle",
+      "target": "vehicle",
+      "source": "entity_rule",
+      "applicability_score": 0.898,
+      "feasibility_score": 0.845,
+      "final_score": 0.871,
+      "reason": "Generated from entity_rule; target detected with confidence 0.88, visibility 1.00, region score 0.79."
+    },
+    {
+      "intent": "monitor_person_area",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.489,
+      "feasibility_score": 0.492,
+      "final_score": 0.49,
+      "reason": "Generated from entity_rule; target detected with confidence 0.14, visibility 1.00, region score 0.60."
+    },
+    {
+      "intent": "hover_near_person",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.489,
+      "feasibility_score": 0.462,
+      "final_score": 0.476,
+      "reason": "Generated from entity_rule; target detected with confidence 0.14, visibility 1.00, region score 0.60."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "source_image": "",
+  "detected_entities": [
+    "cell phone",
+    "vehicle"
+  ],
+  "intent_candidates": [
+    {
+      "intent": "hover_over_vehicle",
+      "target": "vehicle",
+      "source": "entity_rule",
+      "applicability_score": 0.791,
+      "feasibility_score": 0.768,
+      "final_score": 0.78,
+      "reason": "Generated from entity_rule; target detected with confidence 0.66, visibility 1.00, region score 0.80."
+    },
+    {
+      "intent": "inspect_vehicle_area",
+      "target": "vehicle",
+      "source": "entity_rule",
+      "applicability_score": 0.791,
+      "feasibility_score": 0.768,
+      "final_score": 0.78,
+      "reason": "Generated from entity_rule; target detected with confidence 0.66, visibility 1.00, region score 0.80."
+    },
+    {
+      "intent": "follow_vehicle",
+      "target": "vehicle",
+      "source": "entity_rule",
+      "applicability_score": 0.791,
+      "feasibility_score": 0.748,
+      "final_score": 0.77,
+      "reason": "Generated from entity_rule; target detected with confidence 0.66, visibility 1.00, region score 0.80."
+    }
+  ]
+}

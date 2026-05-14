@@ -1,0 +1,28 @@
+{
+  "source_image": "",
+  "detected_entities": [
+    "bench",
+    "person",
+    "umbrella"
+  ],
+  "intent_candidates": [
+    {
+      "intent": "monitor_person_area",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.861,
+      "feasibility_score": 0.82,
+      "final_score": 0.841,
+      "reason": "Generated from entity_rule; target detected with confidence 0.79, visibility 1.00, region score 0.83."
+    },
+    {
+      "intent": "hover_near_person",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.861,
+      "feasibility_score": 0.79,
+      "final_score": 0.826,
+      "reason": "Generated from entity_rule; target detected with confidence 0.79, visibility 1.00, region score 0.83."
+    }
+  ]
+}

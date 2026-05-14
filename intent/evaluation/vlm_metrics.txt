@@ -1,0 +1,12 @@
+VLM Intent Evaluation Results
+========================================
+Total images: 47
+Parse success rate: 47 / 47 (100.00%)
+Average intents per image: 3.00
+Average top-1 score: 0.847
+Perception overlap rate: 36 / 47 (76.60%)
+
+Manual Evaluation
+----------------------------------------
+Scene relevance: 33 / 41 (80.49%)
+Feasibility: 35 / 41 (85.37%)

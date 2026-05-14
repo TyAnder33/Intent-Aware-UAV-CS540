@@ -1,0 +1,29 @@
+{
+  "source_image": "",
+  "detected_entities": [
+    "bicycle",
+    "fire hydrant",
+    "person",
+    "skateboard"
+  ],
+  "intent_candidates": [
+    {
+      "intent": "monitor_person_area",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.729,
+      "feasibility_score": 0.699,
+      "final_score": 0.714,
+      "reason": "Generated from entity_rule; target detected with confidence 0.49, visibility 1.00, region score 0.92."
+    },
+    {
+      "intent": "hover_near_person",
+      "target": "person",
+      "source": "entity_rule",
+      "applicability_score": 0.729,
+      "feasibility_score": 0.669,
+      "final_score": 0.699,
+      "reason": "Generated from entity_rule; target detected with confidence 0.49, visibility 1.00, region score 0.92."
+    }
+  ]
+}
